@@ -70,6 +70,9 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:${camerax_version}"
     implementation "androidx.camera:camera-view:${camerax_version}"
 
+    implementation "androidx.paging:paging-runtime-ktx:3.1.0"
+    implementation 'androidx.room:room-paging:2.4.0-rc01'
+
     testImplementation "androidx.arch.core:core-testing:2.1.0" // InstantTaskExecutorRule
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2" //main coroutine rule
     testImplementation 'org.mockito:mockito-core:3.12.4'

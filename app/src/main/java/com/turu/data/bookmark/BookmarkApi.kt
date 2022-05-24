@@ -6,10 +6,10 @@ import retrofit2.http.*
 interface BookmarkApi {
 
     @GET("bookmarks/users")
-    fun getBookmark(
+    suspend fun getBookmark(
         @Header("Authorization") token: String,
         @Query("userId") userId: Int
-    ) : Call<BookmarkResponse>
+    ) : BookmarkResponse
 
     @POST("bookmarks/users")
     fun createBookmark(
