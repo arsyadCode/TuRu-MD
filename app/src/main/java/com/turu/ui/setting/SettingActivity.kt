@@ -1,16 +1,12 @@
-package com.turu.ui.register
+package com.turu.ui.setting
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.turu.R
 
-class RegisterActivity : AppCompatActivity() {
+class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-    }
-
-    companion object {
-        const val TAG = "RegisterActivity"
+        setContentView(R.layout.activity_setting)
     }
 }
