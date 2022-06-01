@@ -1,6 +1,7 @@
 package com.turu.data.user
 
 import com.turu.model.user.LoginRequest
+import com.turu.model.user.RegisterRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -15,8 +16,6 @@ interface UserApi {
 
     @POST("users/register")
     fun userRegister(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("password") password: String
-    )
+        @Body req: RegisterRequest
+    ): Call<RegisterResponse>
 }
