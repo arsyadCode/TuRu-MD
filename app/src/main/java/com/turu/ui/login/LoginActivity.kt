@@ -13,6 +13,7 @@ import com.turu.R
 import com.turu.databinding.ActivityLoginBinding
 import com.turu.model.UserModel
 import com.turu.model.UserPreference
+import com.turu.model.user.LoginRequest
 import com.turu.ui.ViewModelFactory
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -28,14 +29,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         loginViewModel = ViewModelProvider(this,ViewModelFactory(UserPreference.getInstance(dataStore)))[LoginViewModel::class.java]
-//        loginViewModel.getUser().observe(this) { user ->
-//            this.user = user
-//        }
+        loginViewModel.getUser().observe(this) { user ->
+            this.user = user
+        }
 
         binding.btnLogin.setOnClickListener {
-            val email = binding.emailEditText.text.toString()
-            val password = binding.passwordEditText.text.toString()
+            var loginRequest = LoginRequest()
+            loginRequest.email = binding.emailEditText.text.toString()
+            loginRequest.password = binding.passwordEditText.text.toString()
 
+            loginViewModel.userLogin(loginRequest)
             loginViewModel.login()
 
             val intent = Intent(this@LoginActivity, MainActivity::class.java)
