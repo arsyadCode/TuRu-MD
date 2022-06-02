@@ -2,7 +2,7 @@ package com.turu.data.bookmark
 
 import androidx.lifecycle.LiveData
 import androidx.paging.*
-import com.turu.data.database.BookmarkDatabase
+import com.turu.data.database.bookmark.BookmarkDatabase
 
 class BookmarkRepository (private val bookmarkDatabase: BookmarkDatabase, private val bookmarkApi: BookmarkApi) {
 

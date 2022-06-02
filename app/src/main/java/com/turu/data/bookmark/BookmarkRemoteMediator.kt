@@ -5,8 +5,8 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.turu.data.database.BookmarkDatabase
-import com.turu.data.database.RemoteKeys
+import com.turu.data.database.bookmark.BookmarkDatabase
+import com.turu.data.database.bookmark.RemoteKeys
 
 @OptIn(ExperimentalPagingApi::class)
 class BookmarkRemoteMediator(

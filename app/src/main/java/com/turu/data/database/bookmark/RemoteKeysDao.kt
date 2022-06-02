@@ -1,4 +1,4 @@
-package com.turu.data.database
+package com.turu.data.database.bookmark
 
 import androidx.room.Dao
 import androidx.room.Insert
