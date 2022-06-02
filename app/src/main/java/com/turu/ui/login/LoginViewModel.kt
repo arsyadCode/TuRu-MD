@@ -52,6 +52,8 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
                         token,
                         true)
                     )
+
+                    login()
                 }
             }
 

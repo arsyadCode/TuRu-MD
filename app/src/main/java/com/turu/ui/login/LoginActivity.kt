@@ -40,12 +40,13 @@ class LoginActivity : AppCompatActivity() {
             loginRequest.password = binding.passwordEditText.text.toString()
 
             loginViewModel.userLogin(loginRequest)
-            loginViewModel.login()
 
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
-            finish()
+            if(user.isLogin) {
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            }
         }
 
         binding.btnRegister.setOnClickListener {
