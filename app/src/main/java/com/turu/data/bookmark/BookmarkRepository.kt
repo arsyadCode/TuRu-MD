@@ -2,9 +2,8 @@ package com.turu.data.bookmark
 
 import androidx.lifecycle.LiveData
 import androidx.paging.*
-import com.turu.data.database.bookmark.BookmarkDatabase
 
-class BookmarkRepository (private val bookmarkDatabase: BookmarkDatabase, private val bookmarkApi: BookmarkApi) {
+class BookmarkRepository ( private val bookmarkApi: BookmarkApi) {
 
     fun getAllBookmark(token: String): LiveData<PagingData<BookmarkResponseItem>> {
         @OptIn(ExperimentalPagingApi::class)
@@ -12,9 +11,8 @@ class BookmarkRepository (private val bookmarkDatabase: BookmarkDatabase, privat
             config = PagingConfig(
                 pageSize = 5
             ),
-            remoteMediator = BookmarkRemoteMediator(token, bookmarkDatabase, bookmarkApi),
             pagingSourceFactory = {
-                bookmarkDatabase.bookmarkDao().getAllBookmark()
+                BookmarkPagingSource("", bookmarkApi)
             }
         ).liveData
     }
