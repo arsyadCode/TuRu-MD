@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -33,8 +34,13 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel = ViewModelProvider(
             this,ViewModelFactory(UserPreference.getInstance(dataStore))
         )[LoginViewModel::class.java]
+
         loginViewModel.getUser().observe(this) { user ->
             this.user = user
+        }
+
+        loginViewModel.isLoading.observe(this) {
+            binding.progressBar.visibility = if(it) View.VISIBLE else View.GONE
         }
 
         binding.btnLogin.setOnClickListener {
@@ -43,14 +49,29 @@ class LoginActivity : AppCompatActivity() {
             loginRequest.password = binding.passwordEditText.text.toString()
 
             loginViewModel.userLogin(loginRequest)
-
-            Log.d(TAG, "${user.isLogin}")
+            Log.d(TAG, user.email)
+            Log.d(TAG, user.id)
+            Log.d(TAG, user.name)
+            Log.d(TAG, user.token)
+            Log.d(TAG, user.photo)
+            Log.d(TAG, user.isLogin.toString())
+            Log.d(TAG, "req 1 ${user.isLogin}")
+//            loginViewModel.userLogin(loginRequest)
+//            Log.d(TAG, user.email)
+//            Log.d(TAG, user.id)
+//            Log.d(TAG, user.name)
+//            Log.d(TAG, user.token)
+//            Log.d(TAG, user.photo)
+//            Log.d(TAG, user.isLogin.toString())
+//            Log.d(TAG, "req 2 ${user.isLogin}")
             if(user.isLogin) {
+                Log.d(TAG, "ngecek habis if ${user.isLogin}")
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()
             }
+
         }
 
         binding.btnRegister.setOnClickListener {
