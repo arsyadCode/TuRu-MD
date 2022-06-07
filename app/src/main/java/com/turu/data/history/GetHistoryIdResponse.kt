@@ -2,19 +2,13 @@ package com.turu.data.history
 
 import com.google.gson.annotations.SerializedName
 
-data class HistoryResponse(
-
-	@field:SerializedName("data")
-	val data: HistoryData? = null,
-
-	@field:SerializedName("message")
-	val message: String? = null
-)
-
-data class HistoryData(
+data class GetHistoryIdResponse(
 
 	@field:SerializedName("createdAt")
 	val createdAt: String? = null,
+
+	@field:SerializedName("images")
+	val images: List<String?>? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,

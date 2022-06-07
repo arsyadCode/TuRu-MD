@@ -1,9 +1,20 @@
 package com.turu.data.history
 
-import retrofit2.http.POST
+import com.turu.model.history.CreateHistoryRequest
+import retrofit2.Call
+import retrofit2.http.*
 
 interface HistoryApi {
 
-    @POST
-    fun createHistory()
+    @POST("histories")
+    fun createHistory(
+        @Header("Authorization") token: String,
+        @Body req: CreateHistoryRequest
+    ): Call<CreateHistoryResponse>
+
+    @GET("histories/{id}")
+    fun getHistories(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Call<GetHistoryUserIdResponse>
 }

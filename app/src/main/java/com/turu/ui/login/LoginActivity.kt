@@ -29,7 +29,9 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        loginViewModel = ViewModelProvider(this,ViewModelFactory(UserPreference.getInstance(dataStore)))[LoginViewModel::class.java]
+        loginViewModel = ViewModelProvider(
+            this,ViewModelFactory(UserPreference.getInstance(dataStore))
+        )[LoginViewModel::class.java]
         loginViewModel.getUser().observe(this) { user ->
             this.user = user
         }

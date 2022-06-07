@@ -4,7 +4,6 @@ import com.turu.model.user.LoginRequest
 import com.turu.model.user.RegisterRequest
 import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.Field
 import retrofit2.http.POST
 
 interface UserApi {
