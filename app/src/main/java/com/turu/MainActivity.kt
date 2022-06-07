@@ -11,14 +11,18 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.turu.R
+import com.turu.databinding.ActivityMainBinding
 import com.turu.model.UserPreference
 import com.turu.ui.bookmark.BookmarkActivity
 import com.turu.ui.history.HistoryActivity
 import com.turu.ui.login.LoginActivity
+import com.turu.ui.texttoimage.TextToImage
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModelFactory(UserPreference.getInstance(dataStore))
@@ -26,13 +30,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         mainViewModel.getUser().observe(this) {
             if(!it.isLogin){
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
+        }
+
+        binding.btnTextToImage.setOnClickListener {
+            startActivity(Intent(this, TextToImage::class.java))
         }
     }
 
