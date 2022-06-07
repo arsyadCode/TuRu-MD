@@ -12,17 +12,16 @@ data class BookmarkResponse(
 	val bookmarkResponse: List<BookmarkResponseItem>
 )
 
-@Parcelize
-@Entity(tableName = "bookmark")
+
+
 data class BookmarkResponseItem(
 
 	@field:SerializedName("createdAt")
 	val createdAt: String? = null,
 
-//	@field:SerializedName("images")
-//	val images:  List<String>,
+	@field:SerializedName("images")
+	val images:  List<String>,
 
-	@PrimaryKey
 	@field:SerializedName("id")
 	val id: Int,
 
@@ -34,4 +33,4 @@ data class BookmarkResponseItem(
 
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null
-): Parcelable
+)
