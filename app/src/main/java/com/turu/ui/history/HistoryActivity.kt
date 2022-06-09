@@ -31,12 +31,14 @@ class HistoryActivity : AppCompatActivity() {
             HistoryViewModelFactory(this, UserPreference.getInstance(dataStore))
         )[HistoryViewModel::class.java]
 
-        binding.rvHistory.layoutManager = LinearLayoutManager(this)
+
 
         getData()
     }
 
     private fun getData() {
+        binding.rvHistory.layoutManager = LinearLayoutManager(this)
+
         val adapter = HistoryListAdapter()
 
         binding.rvHistory.adapter = adapter.withLoadStateFooter(
@@ -46,17 +48,17 @@ class HistoryActivity : AppCompatActivity() {
         )
 
         historyViewModel.histories.observe(this) {
+            Log.d("HistoryFLow", "histories observe")
+            Log.d("HistoryFLow", "${historyViewModel.histories}")
             adapter.submitData(lifecycle, it)
-            Log.d(TAG, "histories observe success")
             Log.d(TAG,it.toString())
         }
 
-        adapter.setOnItemClickCallback(object : HistoryListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: GetHistoryUserIdResponseItem) {
-
-                Log.d(TAG, "${data.id}")
-            }
-        })
+//        adapter.setOnItemClickCallback(object : HistoryListAdapter.OnItemClickCallback {
+//            override fun onItemClicked(data: GetHistoryUserIdResponseItem) {
+//                Log.d(TAG, "${data.id}")
+//            }
+//        })
     }
 
     companion object {

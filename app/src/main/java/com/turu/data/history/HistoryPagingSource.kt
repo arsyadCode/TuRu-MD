@@ -1,5 +1,6 @@
 package com.turu.data.history
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 
@@ -18,6 +19,7 @@ class HistoryPagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GetHistoryUserIdResponseItem> {
         return try {
+            Log.d("HistoryFLow", "History Paging Source suspend load")
             val page = params.key ?: INITIAL_PAGE_INDEX
             val responseData = historyApi.getHistories(token, id, page, params.loadSize)
             LoadResult.Page(

@@ -1,5 +1,6 @@
 package com.turu.ui.history
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -20,6 +21,7 @@ class HistoryViewModel(historyRepository: HistoryRepository, private val pref: U
 
     val histories: LiveData<PagingData<GetHistoryUserIdResponseItem>> =
         getUser().switchMap {
+            Log.d("HistoryFLow", "histories in view model")
             historyRepository.getHistories("Bearer ${it.token}",it.id).cachedIn(viewModelScope)
         }
 }

@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.turu.data.history.GetHistoryUserIdResponseItem
 import com.turu.databinding.ItemHistoryBinding
 
-class HistoryListAdapter
-    : PagingDataAdapter<GetHistoryUserIdResponseItem, HistoryListAdapter.ViewHolder>(DIFF_CALLBACK){
+class HistoryListAdapter :
+    PagingDataAdapter<GetHistoryUserIdResponseItem, HistoryListAdapter.ViewHolder>(DIFF_CALLBACK){
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -17,7 +17,7 @@ class HistoryListAdapter
         this.onItemClickCallback = onItemClickCallback
     }
 
-    override fun onBindViewHolder(holder: HistoryListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = getItem(position)
         if (data != null) {
             holder.bind(data)
@@ -27,10 +27,7 @@ class HistoryListAdapter
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): HistoryListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent,false)
         return ViewHolder(binding)
     }
