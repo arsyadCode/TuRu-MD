@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.turu.MainActivity
 import com.turu.R
 import com.turu.databinding.ActivityLoginBinding
+import com.turu.model.LoginModel
 import com.turu.model.UserModel
 import com.turu.model.UserPreference
 import com.turu.model.user.LoginRequest
@@ -44,11 +45,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            var loginRequest = LoginRequest()
-            loginRequest.email = binding.emailEditText.text.toString()
-            loginRequest.password = binding.passwordEditText.text.toString()
+            val email = binding.emailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
 
-            loginViewModel.userLogin(loginRequest)
+            loginViewModel.saveLogin(
+                LoginModel(email, password)
+            )
+
+            loginViewModel.userLogin(email, password)
+
             Log.d(TAG, user.email)
             Log.d(TAG, user.id)
             Log.d(TAG, user.name)
@@ -56,14 +61,7 @@ class LoginActivity : AppCompatActivity() {
             Log.d(TAG, user.photo)
             Log.d(TAG, user.isLogin.toString())
             Log.d(TAG, "req 1 ${user.isLogin}")
-//            loginViewModel.userLogin(loginRequest)
-//            Log.d(TAG, user.email)
-//            Log.d(TAG, user.id)
-//            Log.d(TAG, user.name)
-//            Log.d(TAG, user.token)
-//            Log.d(TAG, user.photo)
-//            Log.d(TAG, user.isLogin.toString())
-//            Log.d(TAG, "req 2 ${user.isLogin}")
+
             if(user.isLogin) {
                 Log.d(TAG, "ngecek habis if ${user.isLogin}")
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)

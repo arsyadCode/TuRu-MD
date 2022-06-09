@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.turu.data.ApiConfig
 import com.turu.data.user.LoginResponse
+import com.turu.model.LoginModel
 import com.turu.model.UserModel
 import com.turu.model.UserPreference
 import com.turu.model.user.LoginRequest
@@ -24,11 +25,22 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
         return pref.getUser().asLiveData()
     }
 
+    fun getLogin(): LiveData<LoginModel> {
+        return pref.getLogin().asLiveData()
+    }
+
     fun login() {
         viewModelScope.launch {
             pref.login()
         }
     }
+
+    fun saveLogin(login: LoginModel) {
+        viewModelScope.launch {
+            pref.saveLogin(login)
+        }
+    }
+
 
     fun saveUser(user: UserModel) {
         viewModelScope.launch {
@@ -36,10 +48,14 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
         }
     }
 
-    fun userLogin(req: LoginRequest){
+    fun userLogin(email: String, password: String) {
+        var loginRequest = LoginRequest()
+        loginRequest.email = email
+        loginRequest.password = password
+
         _isLoading.postValue(true)
         _isLogin.postValue(false)
-        val client = ApiConfig().getUserApi().userLogin(req)
+        val client = ApiConfig().getUserApi().userLogin(loginRequest)
         client.enqueue(object : Callback<LoginResponse>{
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if(response.isSuccessful) {
@@ -64,6 +80,8 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
                         token,
                         true)
                     )
+                    login()
+
                     Log.d(TAG, response.message().toString())
                 } else {
                     Log.e(TAG, response.message().toString())

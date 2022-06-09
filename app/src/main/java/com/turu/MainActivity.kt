@@ -4,18 +4,22 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import com.turu.R
 import com.turu.databinding.ActivityMainBinding
 import com.turu.model.UserPreference
+import com.turu.ui.ViewModelFactory
 import com.turu.ui.bookmark.BookmarkActivity
 import com.turu.ui.history.HistoryActivity
 import com.turu.ui.login.LoginActivity
+import com.turu.ui.login.LoginViewModel
 import com.turu.ui.texttoimage.TextToImage
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -23,9 +27,15 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var runnable: Runnable? = null
+    private var delay = 3600000
 
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModelFactory(UserPreference.getInstance(dataStore))
+    }
+
+    private val loginViewModel: LoginViewModel by viewModels {
+        ViewModelFactory(UserPreference.getInstance(dataStore))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +48,12 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
+
+        }
+
+        loginViewModel.getLogin().observe(this) {
+            loginViewModel.userLogin(it.email,it.password)
+            Log.d(TAG, "user login success")
         }
 
         binding.btnTextToImage.setOnClickListener {
@@ -69,6 +85,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Handler(Looper.getMainLooper()).postDelayed(Runnable {
+            Handler(Looper.getMainLooper()).postDelayed(runnable!!, delay.toLong())
+            loginViewModel.getLogin().observe(this) {
+                loginViewModel.userLogin(it.email,it.password)
+                Log.d(TAG, "user login success")
+            }
+//            Toast.makeText(this@MainActivity, "This method will run every 10 seconds", Toast.LENGTH_SHORT).show()
+        }.also { runnable = it }, delay.toLong())
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Handler(Looper.getMainLooper()).removeCallbacks(runnable!!)
     }
 
     companion object {

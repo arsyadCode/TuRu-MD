@@ -23,6 +23,22 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    fun getLogin():Flow<LoginModel> {
+        return dataStore.data.map { preferences ->
+            LoginModel(
+                preferences[EMAIL_KEY] ?: "",
+                preferences[PASSWORD_KEY] ?: ""
+            )
+        }
+    }
+
+    suspend fun saveLogin(login: LoginModel) {
+        dataStore.edit {
+            it[EMAIL_KEY] = login.email
+            it[PASSWORD_KEY] = login.password
+        }
+    }
+
     suspend fun saveUser(user: UserModel) {
         dataStore.edit { preferences ->
             preferences[ID_KEY] = user.id
@@ -47,6 +63,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[EMAIL_KEY] = ""
             preferences[TOKEN_KEY] = ""
             preferences[PHOTO_KEY] = ""
+            preferences[PASSWORD_KEY] = ""
             preferences[STATE_KEY] = false
         }
     }
@@ -61,6 +78,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val PHOTO_KEY = stringPreferencesKey("photo")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val STATE_KEY = booleanPreferencesKey("state")
+        private val PASSWORD_KEY = stringPreferencesKey("password")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {
