@@ -13,7 +13,10 @@ import androidx.activity.viewModels
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.switchMap
 import com.turu.databinding.ActivityMainBinding
+import com.turu.model.LoginModel
 import com.turu.model.UserPreference
 import com.turu.ui.ViewModelFactory
 import com.turu.ui.bookmark.BookmarkActivity
@@ -28,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var runnable: Runnable? = null
+    private var loop = 1
     private var delay = 3600000
 
     private val mainViewModel: MainViewModel by viewModels {
@@ -50,11 +54,22 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
         loginViewModel.getLogin().observe(this) {
-            loginViewModel.userLogin(it.email,it.password)
-            Log.d(TAG, "user login success")
+            if(loop <= 1) {
+                loginViewModel.userLogin(it.email,it.password)
+                Log.d(TAG, "onResume user login success ")
+                loop++
+            }
+            Log.d(TAG, "DALEM OBSERVE")
         }
+
+        Log.d(TAG, "lUAR OBSERVE")
+
+
+
+
+
+
 
         binding.btnTextToImage.setOnClickListener {
             startActivity(Intent(this, TextToImage::class.java))
@@ -89,12 +104,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.d(TAG, "onResume")
 
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             Handler(Looper.getMainLooper()).postDelayed(runnable!!, delay.toLong())
             loginViewModel.getLogin().observe(this) {
                 loginViewModel.userLogin(it.email,it.password)
-                Log.d(TAG, "user login success")
+                Log.d(TAG, "onResume user login success ")
             }
 //            Toast.makeText(this@MainActivity, "This method will run every 10 seconds", Toast.LENGTH_SHORT).show()
         }.also { runnable = it }, delay.toLong())
