@@ -12,7 +12,7 @@ interface HistoryApi {
         @Body req: CreateHistoryRequest
     ): Call<CreateHistoryResponse>
 
-    @GET("histories/{id}")
+    @GET("histories/users/{id}")
     suspend fun getHistories(
         @Header("Authorization") token: String,
         @Path("id") id: String,

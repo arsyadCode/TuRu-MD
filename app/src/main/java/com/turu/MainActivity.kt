@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var runnable: Runnable? = null
-    private var loop = 1
+    private var loop = 0
     private var delay = 3600000
 
     private val mainViewModel: MainViewModel by viewModels {
@@ -52,10 +52,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
-
         }
+
         loginViewModel.getLogin().observe(this) {
-            if(loop <= 1) {
+            if(loop < 1) {
                 loginViewModel.userLogin(it.email,it.password)
                 Log.d(TAG, "onResume user login success ")
                 loop++
@@ -64,12 +64,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         Log.d(TAG, "lUAR OBSERVE")
-
-
-
-
-
-
 
         binding.btnTextToImage.setOnClickListener {
             startActivity(Intent(this, TextToImage::class.java))

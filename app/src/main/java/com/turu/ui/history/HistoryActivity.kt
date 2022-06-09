@@ -13,6 +13,7 @@ import com.turu.R
 import com.turu.data.history.GetHistoryUserIdResponseItem
 import com.turu.databinding.ActivityHistoryBinding
 import com.turu.model.UserPreference
+import com.turu.ui.LoadingStateAdapter
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -31,24 +32,31 @@ class HistoryActivity : AppCompatActivity() {
         )[HistoryViewModel::class.java]
 
         binding.rvHistory.layoutManager = LinearLayoutManager(this)
+
+        getData()
+    }
+
+    private fun getData() {
         val adapter = HistoryListAdapter()
-        binding.rvHistory.adapter = adapter
+
+        binding.rvHistory.adapter = adapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                adapter.retry()
+            }
+        )
 
         historyViewModel.histories.observe(this) {
-            Log.d(TAG, "histories observe success")
             adapter.submitData(lifecycle, it)
+            Log.d(TAG, "histories observe success")
+            Log.d(TAG,it.toString())
         }
 
         adapter.setOnItemClickCallback(object : HistoryListAdapter.OnItemClickCallback {
             override fun onItemClicked(data: GetHistoryUserIdResponseItem) {
-                
+
                 Log.d(TAG, "${data.id}")
             }
         })
-
-
-
-
     }
 
     companion object {
