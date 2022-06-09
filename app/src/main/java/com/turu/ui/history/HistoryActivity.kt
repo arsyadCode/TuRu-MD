@@ -31,8 +31,6 @@ class HistoryActivity : AppCompatActivity() {
             HistoryViewModelFactory(this, UserPreference.getInstance(dataStore))
         )[HistoryViewModel::class.java]
 
-
-
         getData()
     }
 
@@ -48,11 +46,16 @@ class HistoryActivity : AppCompatActivity() {
         )
 
         historyViewModel.histories.observe(this) {
-            Log.d("HistoryFLow", "histories observe")
-            Log.d("HistoryFLow", "${historyViewModel.histories}")
             adapter.submitData(lifecycle, it)
-            Log.d(TAG,it.toString())
+            Log.d(TAG,"histories observe")
         }
+
+//        historyViewModel.histories.observe(this) {
+//            Log.d("HistoryFLow", "histories observe")
+//            Log.d("HistoryFLow", "${historyViewModel.histories}")
+//            adapter.submitData(lifecycle, it)
+//            Log.d(TAG,it.toString())
+//        }
 
 //        adapter.setOnItemClickCallback(object : HistoryListAdapter.OnItemClickCallback {
 //            override fun onItemClicked(data: GetHistoryUserIdResponseItem) {
