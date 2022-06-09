@@ -4,27 +4,30 @@ import com.google.gson.annotations.SerializedName
 
 data class GetHistoryUserIdResponse(
 
+	@field: SerializedName("message")
+	val message: String? = null,
+
 	@field:SerializedName("GetHistoryUserIdResponse")
-	val getHistoryUserIdResponse: List<GetHistoryUserIdResponseItem?>? = null
+	val ListHistories: List<GetHistoryUserIdResponseItem>
 )
 
 data class GetHistoryUserIdResponseItem(
 
 	@field:SerializedName("createdAt")
-	val createdAt: String? = null,
+	val createdAt: String,
 
 	@field:SerializedName("images")
-	val images: List<String?>? = null,
+	val images: List<String>,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:SerializedName("text")
-	val text: String? = null,
+	val text: String,
 
 	@field:SerializedName("userId")
-	val userId: Int? = null,
+	val userId: Int,
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String? = null
+	val updatedAt: String
 )

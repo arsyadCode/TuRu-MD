@@ -13,8 +13,10 @@ interface HistoryApi {
     ): Call<CreateHistoryResponse>
 
     @GET("histories/{id}")
-    fun getHistories(
+    suspend fun getHistories(
         @Header("Authorization") token: String,
-        @Path("id") id: String
-    ): Call<GetHistoryUserIdResponse>
+        @Path("id") id: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): GetHistoryUserIdResponse
 }

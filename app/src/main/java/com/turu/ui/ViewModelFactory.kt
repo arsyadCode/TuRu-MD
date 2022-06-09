@@ -2,7 +2,9 @@ package com.turu.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.turu.di.HistoryInjection
 import com.turu.model.UserPreference
+import com.turu.ui.history.HistoryViewModel
 import com.turu.ui.login.LoginViewModel
 import com.turu.ui.register.RegisterViewModel
 import com.turu.ui.texttoimage.TextToImageViewModel
