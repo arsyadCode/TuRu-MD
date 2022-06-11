@@ -11,11 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="TextView"
+        android:text="@string/tv_item_bookmark"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_del_bookmark"
+        app:layout_constraintBottom_toBottomOf="@+id/tb_bookmark"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_del_bookmark" />
+        app:layout_constraintTop_toTopOf="@+id/tb_bookmark" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_detail_bookmark"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_bookmark" />
 
     <ToggleButton
-        android:id="@+id/btn_del_bookmark"
+        android:id="@+id/tb_bookmark"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginTop="8dp"
