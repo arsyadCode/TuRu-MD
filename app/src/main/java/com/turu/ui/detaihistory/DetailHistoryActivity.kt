@@ -58,8 +58,6 @@ class DetailHistoryActivity : AppCompatActivity() {
             val token = "Bearer ${user.token}"
             detailHistoryViewModel.deleteHistory(token, id)
             Log.d(TAG, "delete history")
-            val intent = Intent(this, HistoryActivity::class.java)
-            startActivity(intent)
             finish()
         }
     }

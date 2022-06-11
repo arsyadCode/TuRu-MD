@@ -57,6 +57,7 @@ class HistoryActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        finish()
         Log.d(TAG, "onStop called")
     }
 
