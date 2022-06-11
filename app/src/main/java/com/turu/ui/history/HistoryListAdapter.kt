@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.turu.data.history.GetHistoryUserIdResponseItem
+import com.turu.data.history.response.GetHistoryUserIdResponseItem
 import com.turu.databinding.ItemHistoryBinding
 
 class HistoryListAdapter :

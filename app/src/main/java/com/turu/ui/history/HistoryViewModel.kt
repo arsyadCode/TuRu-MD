@@ -4,8 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.turu.data.history.GetHistoryUserIdResponse
-import com.turu.data.history.GetHistoryUserIdResponseItem
+import com.turu.data.history.response.GetHistoryUserIdResponseItem
 import com.turu.data.history.HistoryRepository
 import com.turu.model.UserModel
 import com.turu.model.UserPreference

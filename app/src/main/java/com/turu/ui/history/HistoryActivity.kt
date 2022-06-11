@@ -9,8 +9,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.turu.R
-import com.turu.data.history.GetHistoryUserIdResponseItem
+import com.turu.data.history.response.GetHistoryUserIdResponseItem
 import com.turu.databinding.ActivityHistoryBinding
 import com.turu.model.UserPreference
 import com.turu.ui.LoadingStateAdapter

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.turu.data.ApiConfig
-import com.turu.data.history.CreateHistoryResponse
+import com.turu.data.history.response.CreateHistoryResponse
 import com.turu.model.UserModel
 import com.turu.model.UserPreference
 import com.turu.model.history.CreateHistoryRequest

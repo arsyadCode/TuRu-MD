@@ -1,4 +1,4 @@
-package com.turu.data.history
+package com.turu.data.history.response
 
 import com.google.gson.annotations.SerializedName
 

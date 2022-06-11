@@ -1,4 +1,4 @@
-package com.turu
+package com.turu.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

@@ -1,15 +1,6 @@
-package com.turu.data.history
+package com.turu.data.history.response
 
 import com.google.gson.annotations.SerializedName
-
-data class GetHistoryUserIdResponse(
-
-	@field: SerializedName("message")
-	val message: String? = null,
-
-	@field:SerializedName("GetHistoryUserIdResponse")
-	val ListHistories: List<GetHistoryUserIdResponseItem>
-)
 
 data class GetHistoryUserIdResponseItem(
 

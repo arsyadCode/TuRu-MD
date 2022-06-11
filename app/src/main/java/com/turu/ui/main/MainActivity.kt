@@ -1,4 +1,4 @@
-package com.turu
+package com.turu.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -13,10 +13,8 @@ import androidx.activity.viewModels
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.switchMap
+import com.turu.R
 import com.turu.databinding.ActivityMainBinding
-import com.turu.model.LoginModel
 import com.turu.model.UserPreference
 import com.turu.ui.ViewModelFactory
 import com.turu.ui.bookmark.BookmarkActivity

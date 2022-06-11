@@ -1,5 +1,7 @@
 package com.turu.data.history
 
+import com.turu.data.history.response.CreateHistoryResponse
+import com.turu.data.history.response.GetHistoryUserIdResponseItem
 import com.turu.model.history.CreateHistoryRequest
 import retrofit2.Call
 import retrofit2.http.*

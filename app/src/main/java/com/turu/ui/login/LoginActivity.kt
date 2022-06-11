@@ -10,13 +10,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.turu.MainActivity
-import com.turu.R
+import com.turu.ui.main.MainActivity
 import com.turu.databinding.ActivityLoginBinding
 import com.turu.model.LoginModel
 import com.turu.model.UserModel
 import com.turu.model.UserPreference
-import com.turu.model.user.LoginRequest
 import com.turu.ui.ViewModelFactory
 import com.turu.ui.register.RegisterActivity
 

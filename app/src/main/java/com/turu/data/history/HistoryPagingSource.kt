@@ -3,6 +3,7 @@ package com.turu.data.history
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.turu.data.history.response.GetHistoryUserIdResponseItem
 
 class HistoryPagingSource(
     private val token: String,

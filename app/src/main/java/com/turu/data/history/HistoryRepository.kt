@@ -6,6 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
+import com.turu.data.history.response.GetHistoryUserIdResponseItem
 
 class HistoryRepository(
     private val historyApi: HistoryApi
