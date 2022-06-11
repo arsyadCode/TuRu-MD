@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">turu</string>
     <string name="tv_item_history">Just a text</string>
+    <string name="tv_item_bookmark">This is bookmark</string>
 </resources>

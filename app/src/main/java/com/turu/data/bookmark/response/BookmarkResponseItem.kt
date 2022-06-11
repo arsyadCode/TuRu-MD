@@ -1,4 +1,4 @@
-package com.turu.data.bookmark
+package com.turu.data.bookmark.response
 
 import com.google.gson.annotations.SerializedName
 

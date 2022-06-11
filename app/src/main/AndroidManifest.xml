@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Turu">
         <activity
+            android:name=".ui.detailbookmark.DetailBookmarkActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.detaihistory.DetailHistoryActivity"
             android:exported="false" />
         <activity

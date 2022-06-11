@@ -17,8 +17,7 @@ import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_LIST_PICT
 import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_TEXT
 
 
-class HistoryListAdapter :
-    PagingDataAdapter<GetHistoryUserIdResponseItem, HistoryListAdapter.ViewHolder>(DIFF_CALLBACK){
+class HistoryListAdapter : PagingDataAdapter<GetHistoryUserIdResponseItem, HistoryListAdapter.ViewHolder>(DIFF_CALLBACK){
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
