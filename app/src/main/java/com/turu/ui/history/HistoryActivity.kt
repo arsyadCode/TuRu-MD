@@ -22,6 +22,7 @@ class HistoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHistoryBinding
     private lateinit var historyViewModel: HistoryViewModel
+    private val adapter = HistoryListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +39,6 @@ class HistoryActivity : AppCompatActivity() {
     private fun getData() {
         binding.rvHistory.layoutManager = LinearLayoutManager(this)
 
-        val adapter = HistoryListAdapter()
 
         binding.rvHistory.adapter = adapter.withLoadStateFooter(
             footer = LoadingStateAdapter {
@@ -52,6 +52,12 @@ class HistoryActivity : AppCompatActivity() {
             adapter.submitData(lifecycle, it)
             Log.d(TAG,it.toString())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume called")
+        getData()
     }
 
     companion object {
