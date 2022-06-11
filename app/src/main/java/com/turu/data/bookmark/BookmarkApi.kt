@@ -9,7 +9,7 @@ interface BookmarkApi {
     suspend fun getBookmark(
         @Header("Authorization") token: String,
         @Query("userId") userId: Int
-    ) : BookmarkResponse
+    ): List<BookmarkResponseItem>
 
     @POST("bookmarks/users")
     fun createBookmark(

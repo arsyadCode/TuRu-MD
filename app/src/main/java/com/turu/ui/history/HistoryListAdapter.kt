@@ -1,10 +1,11 @@
 package com.turu.ui.history
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import com.turu.ui.detaihistory.DetailHistoryActivity
 import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_ID
 import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_LIST_PICTURES
 import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_TEXT
+
 
 class HistoryListAdapter :
     PagingDataAdapter<GetHistoryUserIdResponseItem, HistoryListAdapter.ViewHolder>(DIFF_CALLBACK){

@@ -1,6 +1,7 @@
 package com.turu.ui.detaihistory
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.turu.ui.ViewModelFactory
 import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_ID
 import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_LIST_PICTURES
 import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_TEXT
+import com.turu.ui.history.HistoryActivity
 import com.turu.ui.texttoimage.TextToImageAdapter
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -56,8 +58,17 @@ class DetailHistoryActivity : AppCompatActivity() {
             val token = "Bearer ${user.token}"
             detailHistoryViewModel.deleteHistory(token, id)
             Log.d(TAG, "delete history")
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
             finish()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val intent = Intent(this, HistoryActivity::class.java)
+        startActivity(intent)
+        Log.d(TAG, "onDestroy called")
     }
 
     companion object {
