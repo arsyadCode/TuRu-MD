@@ -1,6 +1,7 @@
 package com.turu.ui.history
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import com.turu.data.history.response.GetHistoryUserIdResponseItem
 import com.turu.databinding.ActivityHistoryBinding
 import com.turu.model.UserPreference
 import com.turu.ui.LoadingStateAdapter
+import com.turu.ui.detaihistory.DetailHistoryActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -50,12 +52,6 @@ class HistoryActivity : AppCompatActivity() {
             adapter.submitData(lifecycle, it)
             Log.d(TAG,it.toString())
         }
-
-        adapter.setOnItemClickCallback(object : HistoryListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: GetHistoryUserIdResponseItem) {
-                Log.d(TAG, "${data.id}")
-            }
-        })
     }
 
     companion object {

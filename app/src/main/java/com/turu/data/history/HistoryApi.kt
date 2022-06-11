@@ -1,6 +1,7 @@
 package com.turu.data.history
 
 import com.turu.data.history.response.CreateHistoryResponse
+import com.turu.data.history.response.DeleteResponse
 import com.turu.data.history.response.GetHistoryUserIdResponseItem
 import com.turu.model.history.CreateHistoryRequest
 import retrofit2.Call
@@ -21,4 +22,10 @@ interface HistoryApi {
         @Query("page") page: Int,
         @Query("size") size: Int
     ): List<GetHistoryUserIdResponseItem>
+
+    @DELETE("histories/{history_id}")
+    fun delHistory(
+        @Header("Authorization") token: String,
+        @Path("history_id") id: Int
+    ): Call<DeleteResponse>
 }

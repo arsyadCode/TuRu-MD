@@ -1,12 +1,19 @@
 package com.turu.ui.history
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.turu.data.history.response.GetHistoryUserIdResponseItem
 import com.turu.databinding.ItemHistoryBinding
+import com.turu.ui.detaihistory.DetailHistoryActivity
+import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_ID
+import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_LIST_PICTURES
+import com.turu.ui.detaihistory.DetailHistoryViewModel.Companion.EXTRA_TEXT
 
 class HistoryListAdapter :
     PagingDataAdapter<GetHistoryUserIdResponseItem, HistoryListAdapter.ViewHolder>(DIFF_CALLBACK){
@@ -22,7 +29,13 @@ class HistoryListAdapter :
         if (data != null) {
             holder.bind(data)
             holder.itemView.setOnClickListener{
-                onItemClickCallback.onItemClicked(data)
+                val intent = Intent(holder.itemView.context, DetailHistoryActivity::class.java)
+                intent.putExtra(EXTRA_ID, data.id)
+                intent.putExtra(EXTRA_TEXT, data.text)
+                val listPictures = data.images.toTypedArray()
+                intent.putExtra(EXTRA_LIST_PICTURES, listPictures)
+                holder.itemView.context.startActivity(intent)
+                Log.d("History", "History : ${data.id}, ${data.text}")
             }
         }
     }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.turu.di.HistoryInjection
 import com.turu.model.UserPreference
+import com.turu.ui.detaihistory.DetailHistoryViewModel
 import com.turu.ui.history.HistoryViewModel
 import com.turu.ui.login.LoginViewModel
 import com.turu.ui.register.RegisterViewModel
@@ -18,6 +19,9 @@ class ViewModelFactory (private val pref: UserPreference) : ViewModelProvider.Ne
             }
             modelClass.isAssignableFrom(TextToImageViewModel::class.java) -> {
                 TextToImageViewModel(pref) as T
+            }
+            modelClass.isAssignableFrom(DetailHistoryViewModel::class.java) -> {
+                DetailHistoryViewModel(pref) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
