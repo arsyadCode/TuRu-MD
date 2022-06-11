@@ -53,7 +53,7 @@ class DetailHistoryActivity : AppCompatActivity() {
         }
 
         binding.btnDelHistory.setOnClickListener {
-            val token = user.token
+            val token = "Bearer ${user.token}"
             detailHistoryViewModel.deleteHistory(token, id)
             Log.d(TAG, "delete history")
             finish()
