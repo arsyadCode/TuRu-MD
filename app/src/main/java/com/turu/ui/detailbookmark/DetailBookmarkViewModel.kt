@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.turu.data.ApiConfig
 import com.turu.data.bookmark.response.DeleteBookmarkResponse
-import com.turu.data.history.response.DeleteResponse
 import com.turu.model.UserModel
 import com.turu.model.UserPreference
 import retrofit2.Call
