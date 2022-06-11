@@ -8,17 +8,24 @@ import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.turu.databinding.ActivityDetailBookmarkBinding
 import com.turu.model.UserModel
 import com.turu.model.UserPreference
+import com.turu.model.bookmark.CreateBookmarkRequest
 import com.turu.ui.ViewModelFactory
 import com.turu.ui.bookmark.BookmarkActivity
 import com.turu.ui.detaihistory.DetailHistoryActivity
 import com.turu.ui.detaihistory.DetailHistoryViewModel
 import com.turu.ui.history.HistoryActivity
 import com.turu.ui.texttoimage.TextToImageAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -53,8 +60,29 @@ class DetailBookmarkActivity : AppCompatActivity() {
         if (listPictures != null) {
             adapter.setListPictures(listPictures.toList())
         }
+        binding.tbBookmark.isChecked = false
+        var _isChecked: MutableLiveData<Boolean> = binding.tbBookmark.isChecked as MutableLiveData<Boolean>
+        val isChecked: LiveData<Boolean> = _isChecked
 
-        binding.btnDelBookmark.setOnClickListener {
+        isChecked.observe(this) {
+            var check = it
+            binding.tbBookmark.setOnClickListener{
+                val token = "Bearer ${user.token}"
+                if(check){
+                    var createBookmarkRequest = CreateBookmarkRequest()
+                    createBookmarkRequest.text = text
+                    detailBookmarkViewModel.createBookmark(token, createBookmarkRequest)
+                    _isChecked.postValue(false)
+                } else {
+                    detailBookmarkViewModel.deleteBookmark(token, id)
+                    Log.d(DetailHistoryActivity.TAG, "delete bookmark")
+                    _isChecked.postValue(true)
+                }
+            }
+        }
+
+
+        binding.tbBookmark.setOnClickListener {
             val token = "Bearer ${user.token}"
             detailBookmarkViewModel.deleteBookmark(token, id)
             Log.d(DetailHistoryActivity.TAG, "delete history")
