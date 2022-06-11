@@ -18,5 +18,5 @@ interface HistoryApi {
         @Path("id") id: String,
         @Query("page") page: Int,
         @Query("size") size: Int
-    ): GetHistoryUserIdResponse
+    ): List<GetHistoryUserIdResponseItem>
 }

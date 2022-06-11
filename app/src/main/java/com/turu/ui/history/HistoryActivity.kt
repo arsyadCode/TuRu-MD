@@ -46,22 +46,17 @@ class HistoryActivity : AppCompatActivity() {
         )
 
         historyViewModel.histories.observe(this) {
+            Log.d("HistoryFLow", "histories observe")
+            Log.d("HistoryFLow", "${historyViewModel.histories}")
             adapter.submitData(lifecycle, it)
-            Log.d(TAG,"histories observe")
+            Log.d(TAG,it.toString())
         }
 
-//        historyViewModel.histories.observe(this) {
-//            Log.d("HistoryFLow", "histories observe")
-//            Log.d("HistoryFLow", "${historyViewModel.histories}")
-//            adapter.submitData(lifecycle, it)
-//            Log.d(TAG,it.toString())
-//        }
-
-//        adapter.setOnItemClickCallback(object : HistoryListAdapter.OnItemClickCallback {
-//            override fun onItemClicked(data: GetHistoryUserIdResponseItem) {
-//                Log.d(TAG, "${data.id}")
-//            }
-//        })
+        adapter.setOnItemClickCallback(object : HistoryListAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: GetHistoryUserIdResponseItem) {
+                Log.d(TAG, "${data.id}")
+            }
+        })
     }
 
     companion object {

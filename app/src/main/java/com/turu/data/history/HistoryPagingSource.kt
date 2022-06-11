@@ -23,9 +23,9 @@ class HistoryPagingSource(
             val page = params.key ?: INITIAL_PAGE_INDEX
             val responseData = historyApi.getHistories(token, id, page, params.loadSize)
             LoadResult.Page(
-                data = responseData.ListHistories,
+                data = responseData,
                 prevKey = if (page == INITIAL_PAGE_INDEX) null else page - 1,
-                nextKey = if (responseData.ListHistories.isNullOrEmpty()) null else page + 1
+                nextKey = if (responseData.isNullOrEmpty()) null else page + 1
             )
         } catch (exception: Exception) {
             return LoadResult.Error(exception)
