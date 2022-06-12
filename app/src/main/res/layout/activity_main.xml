@@ -25,7 +25,6 @@
         android:text="Image"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/teal_700"
         app:layout_constraintEnd_toEndOf="@+id/btn_image_to_text"
         app:layout_constraintStart_toStartOf="@+id/btn_image_to_text"
         app:layout_constraintTop_toBottomOf="@+id/btn_image_to_text" />
@@ -48,7 +47,6 @@
         android:text="Text"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/teal_700"
         app:layout_constraintEnd_toEndOf="@+id/btn_text_to_image"
         app:layout_constraintStart_toStartOf="@+id/btn_text_to_image"
         app:layout_constraintTop_toBottomOf="@+id/btn_text_to_image" />
@@ -86,7 +84,6 @@
         android:text="History"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/teal_700"
         app:layout_constraintEnd_toEndOf="@+id/btn_history"
         app:layout_constraintStart_toStartOf="@+id/btn_history"
         app:layout_constraintTop_toBottomOf="@+id/btn_history" />
@@ -109,7 +106,6 @@
         android:text="Logout"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/teal_700"
         app:layout_constraintEnd_toEndOf="@+id/btn_logout"
         app:layout_constraintStart_toStartOf="@+id/btn_logout"
         app:layout_constraintTop_toBottomOf="@+id/btn_logout" />
