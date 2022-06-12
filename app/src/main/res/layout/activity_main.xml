@@ -10,27 +10,46 @@
         android:id="@+id/btn_image_to_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/teal_700"
         android:src="@drawable/ic_baseline_image_24"
-        android:text="Image to Text"
-        app:tint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Image"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btn_image_to_text"
+        app:layout_constraintStart_toStartOf="@+id/btn_image_to_text"
+        app:layout_constraintTop_toBottomOf="@+id/btn_image_to_text" />
 
     <ImageButton
         android:id="@+id/btn_text_to_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
-        android:src="@drawable/ic_baseline_text_format_24"
         android:backgroundTint="@color/teal_700"
-        android:text="Text to Image"
-        app:tint="@color/white"
+        android:src="@drawable/ic_baseline_text_format_24"
         app:layout_constraintBottom_toBottomOf="@+id/btn_image_to_text"
         app:layout_constraintStart_toEndOf="@+id/btn_image_to_text"
-        app:layout_constraintTop_toTopOf="@+id/btn_image_to_text" />
+        app:layout_constraintTop_toTopOf="@+id/btn_image_to_text"
+        app:tint="@color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btn_text_to_image"
+        app:layout_constraintStart_toStartOf="@+id/btn_text_to_image"
+        app:layout_constraintTop_toBottomOf="@+id/btn_text_to_image" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -58,16 +77,37 @@
         app:srcCompat="@drawable/ic_baseline_history_24"
         app:tint="@color/white" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btn_history"
+        app:layout_constraintStart_toStartOf="@+id/btn_history"
+        app:layout_constraintTop_toBottomOf="@+id/btn_history" />
+
     <ImageButton
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/teal_700"
         android:layout_marginTop="41dp"
-        app:tint="@color/white"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintEnd_toEndOf="@+id/btn_text_to_image"
         app:layout_constraintStart_toStartOf="@+id/btn_text_to_image"
         app:layout_constraintTop_toBottomOf="@+id/btn_text_to_image"
-        app:srcCompat="@drawable/ic_baseline_power_settings_new_24" />
+        app:srcCompat="@drawable/ic_baseline_power_settings_new_24"
+        app:tint="@color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btn_logout"
+        app:layout_constraintStart_toStartOf="@+id/btn_logout"
+        app:layout_constraintTop_toBottomOf="@+id/btn_logout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

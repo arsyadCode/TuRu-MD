@@ -10,9 +10,9 @@
     app:cardElevation="4dp"
     app:cardMaxElevation="4dp"
     app:cardUseCompatPadding="true"
+    android:outlineAmbientShadowColor="@color/teal_700"
+    android:outlineProvider="bounds"
     xmlns:tools="http://schemas.android.com/tools">
-
-
 
     <ImageView
         android:id="@+id/imageView"

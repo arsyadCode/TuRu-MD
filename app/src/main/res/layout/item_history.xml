@@ -12,6 +12,7 @@
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:cardMaxElevation="4dp"
+        android:backgroundTint="@color/teal_200"
         app:cardUseCompatPadding="true">
 
         <TextView
@@ -22,7 +23,8 @@
             android:layout_marginBottom="4dp"
             android:padding="8dp"
             android:gravity="start"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
             android:textStyle="bold"
             tools:text="@string/tv_item_history" />
     </androidx.cardview.widget.CardView>
