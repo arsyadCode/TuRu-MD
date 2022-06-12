@@ -33,10 +33,10 @@ class TextInputEmail: AppCompatEditText {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (s.toString().isNotEmpty()) {
                     if(!android.util.Patterns.EMAIL_ADDRESS.matcher(s.toString()).matches()){
-                        error = "Format email salah"
+                        error = "Email is not valid"
                     }
                 } else {
-                    error = "Email tidak boleh kosong"
+                    error = "Email required"
                 }
             }
 

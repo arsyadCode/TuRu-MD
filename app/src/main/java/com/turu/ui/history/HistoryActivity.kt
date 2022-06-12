@@ -1,6 +1,7 @@
 package com.turu.ui.history
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -21,10 +22,17 @@ class HistoryActivity : AppCompatActivity() {
     private lateinit var historyViewModel: HistoryViewModel
     private val adapter = HistoryListAdapter()
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         historyViewModel = ViewModelProvider(this,
             HistoryViewModelFactory(this, UserPreference.getInstance(dataStore))

@@ -34,7 +34,7 @@ class TextInputName : AppCompatEditText {
                 if (s.toString().isNotEmpty()) {
 
                 } else {
-                    error = "nama tidak boleh kosong"
+                    error = "Name required"
                 }
             }
 

@@ -20,15 +20,26 @@ class RegisterActivity : AppCompatActivity() {
         registerViewModel = RegisterViewModel()
 
         binding.btnRegister.setOnClickListener {
-            var registerRequest = RegisterRequest()
 
-            registerRequest.name = binding.nameEditText.text.toString()
-            registerRequest.email = binding.emailEditText.text.toString()
-            registerRequest.password = binding.confirmPasswordEditText.text.toString()
+            var name = binding.nameEditText.text.toString()
+            var email = binding.emailEditText.text.toString()
+            var password = binding.passwordEditText.text.toString()
+            var confirmPassword = binding.confirmPasswordEditText.text.toString()
 
-            registerViewModel.userRegister(registerRequest)
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            if(confirmPassword == password) {
+                var registerRequest = RegisterRequest()
+
+                registerRequest.name = name
+                registerRequest.email = email
+                registerRequest.password = confirmPassword
+
+
+                registerViewModel.userRegister(registerRequest)
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            } else {
+                binding.confirmPasswordEditText.error = "Must same with password"
+            }
         }
 
 

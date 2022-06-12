@@ -31,6 +31,11 @@ class ImageToTextActivity: AppCompatActivity()  {
     private lateinit var binding: ActivityImageToTextBinding
     private var getFile: File? = null
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
@@ -59,6 +64,7 @@ class ImageToTextActivity: AppCompatActivity()  {
         setContentView(binding.root)
         var bitmap: Bitmap?
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(

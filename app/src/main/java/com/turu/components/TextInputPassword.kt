@@ -33,11 +33,11 @@ class TextInputPassword : AppCompatEditText {
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (s.toString().isEmpty()) {
-                    error = "Kata sandi tidak boleh kosong"
+                    error = "Password required"
                 }
                 else {
                     if(s.toString().length < 6) {
-                        error  = "Kata sandi kurang 6 karakter"
+                        error  = "Password must 6 or more"
                     }
                 }
             }

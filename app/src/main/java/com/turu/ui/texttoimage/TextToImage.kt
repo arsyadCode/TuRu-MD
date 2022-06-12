@@ -24,10 +24,17 @@ class TextToImage : AppCompatActivity() {
     private lateinit var textToImageViewModel: TextToImageViewModel
     private lateinit var user: UserModel
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTextToImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         textToImageViewModel = ViewModelProvider(this,
             ViewModelFactory(UserPreference.getInstance(dataStore))

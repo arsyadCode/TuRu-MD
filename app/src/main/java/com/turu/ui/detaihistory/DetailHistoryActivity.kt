@@ -30,6 +30,8 @@ class DetailHistoryActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
+        val intent = Intent(this, HistoryActivity::class.java)
+        startActivity(intent)
         return true
     }
 
