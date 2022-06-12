@@ -8,12 +8,16 @@
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.165" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.165" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/drawable/ic_baseline_text_format_24.xml" value="0.165" />
+        <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/drawable/ic_capture.xml" value="0.165" />
+        <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/drawable/ic_place_holder.xml" value="0.165" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/drawable/toogle_bookmark.xml" value="0.165" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/drawable/toogle_favorite.xml" value="0.165" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_bookmark.xml" value="0.16621376811594202" />
+        <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_camera.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_detail_bookmark.xml" value="0.4083333333333333" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_detail_history.xml" value="0.33" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_history.xml" value="0.16621376811594202" />
+        <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_image_to_text.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_main.xml" value="0.16621376811594202" />
         <entry key="..\:/Project/Capstone/TuRu/app/src/main/res/layout/activity_register.xml" value="0.25" />

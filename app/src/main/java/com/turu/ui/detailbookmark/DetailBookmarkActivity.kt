@@ -19,8 +19,8 @@ import com.turu.model.bookmark.CreateBookmarkRequest
 import com.turu.ui.ViewModelFactory
 import com.turu.ui.bookmark.BookmarkActivity
 import com.turu.ui.detaihistory.DetailHistoryActivity
-import com.turu.ui.detaihistory.DetailHistoryViewModel
-import com.turu.ui.history.HistoryActivity
+        import com.turu.ui.detaihistory.DetailHistoryViewModel
+        import com.turu.ui.history.HistoryActivity
 import com.turu.ui.texttoimage.TextToImageAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

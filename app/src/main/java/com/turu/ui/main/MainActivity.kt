@@ -29,15 +29,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var runnable: Runnable? = null
-    private var loop = 0
     private var delay = 3600000
 
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModelFactory(UserPreference.getInstance(dataStore))
-    }
-
-    private val loginViewModel: LoginViewModel by viewModels {
-        ViewModelFactory(UserPreference.getInstance(dataStore))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,17 +46,6 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
-
-        loginViewModel.getLogin().observe(this) {
-            if(loop < 1) {
-                loginViewModel.userLogin(it.email,it.password)
-                Log.d(TAG, "onResume user login success ")
-                loop++
-            }
-            Log.d(TAG, "DALEM OBSERVE")
-        }
-
-        Log.d(TAG, "lUAR OBSERVE")
 
         binding.btnTextToImage.setOnClickListener {
             startActivity(Intent(this, TextToImage::class.java))
@@ -92,25 +76,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume")
-
-        Handler(Looper.getMainLooper()).postDelayed(Runnable {
-            Handler(Looper.getMainLooper()).postDelayed(runnable!!, delay.toLong())
-            loginViewModel.getLogin().observe(this) {
-                loginViewModel.userLogin(it.email,it.password)
-                Log.d(TAG, "onResume user login success ")
-            }
-//            Toast.makeText(this@MainActivity, "This method will run every 10 seconds", Toast.LENGTH_SHORT).show()
-        }.also { runnable = it }, delay.toLong())
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Handler(Looper.getMainLooper()).removeCallbacks(runnable!!)
     }
 
     companion object {
