@@ -19,6 +19,7 @@ import com.turu.model.UserPreference
 import com.turu.ui.ViewModelFactory
 import com.turu.ui.bookmark.BookmarkActivity
 import com.turu.ui.history.HistoryActivity
+import com.turu.ui.imagetotext.ImageToTextActivity
 import com.turu.ui.login.LoginActivity
 import com.turu.ui.login.LoginViewModel
 import com.turu.ui.texttoimage.TextToImage
@@ -28,8 +29,6 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var runnable: Runnable? = null
-    private var delay = 3600000
 
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModelFactory(UserPreference.getInstance(dataStore))
@@ -50,6 +49,18 @@ class MainActivity : AppCompatActivity() {
         binding.btnTextToImage.setOnClickListener {
             startActivity(Intent(this, TextToImage::class.java))
         }
+
+        binding.btnImageToText.setOnClickListener {
+            startActivity(Intent(this, ImageToTextActivity::class.java))
+        }
+
+        binding.btnHistory.setOnClickListener {
+            startActivity(Intent(this, HistoryActivity::class.java))
+        }
+
+        binding.btnLogout.setOnClickListener {
+            mainViewModel.logout()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -59,18 +70,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.action_bookmark -> {
-                val i = Intent(this, BookmarkActivity::class.java)
-                startActivity(i)
-            }
+//            R.id.action_bookmark -> {
+//                val i = Intent(this, BookmarkActivity::class.java)
+//                startActivity(i)
+//            }
             R.id.action_history -> {
                 val i = Intent(this, HistoryActivity::class.java)
                 startActivity(i)
             }
-            R.id.action_settings -> {
+//            R.id.action_settings -> {
 //                val i = Intent(this, )
 //                startActivity(i)
-            }
+//            }
             R.id.action_logout -> {
                 mainViewModel.logout()
             }

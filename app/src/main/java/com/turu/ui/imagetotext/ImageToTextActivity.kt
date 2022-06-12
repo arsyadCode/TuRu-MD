@@ -17,7 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toBitmap
 import com.turu.databinding.ActivityImageToTextBinding
-import com.turu.ml.AslQuant1
+import com.turu.ml.AslQuant
 import com.turu.utils.rotateBitmap
 import com.turu.utils.uriToFile
 import com.turu.utils.createTempFile
@@ -76,7 +76,7 @@ class ImageToTextActivity: AppCompatActivity()  {
         binding.galleryButton.setOnClickListener { startGallery() }
         binding.uploadButton.setOnClickListener {
 
-            val model = AslQuant1.newInstance(this)
+            val model = AslQuant.newInstance(this)
 
             // get image
             bitmap = binding.previewImageView.drawable.toBitmap()

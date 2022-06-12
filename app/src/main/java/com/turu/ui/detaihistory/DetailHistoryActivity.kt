@@ -58,14 +58,14 @@ class DetailHistoryActivity : AppCompatActivity() {
             val token = "Bearer ${user.token}"
             detailHistoryViewModel.deleteHistory(token, id)
             Log.d(TAG, "delete history")
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
             finish()
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        val intent = Intent(this, HistoryActivity::class.java)
-        startActivity(intent)
         Log.d(TAG, "onDestroy called")
     }
 

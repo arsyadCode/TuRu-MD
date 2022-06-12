@@ -10,23 +10,23 @@
         android:id="@+id/btn_image_to_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
         android:src="@drawable/ic_baseline_image_24"
         android:text="Image to Text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
 
     <ImageButton
         android:id="@+id/btn_text_to_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
         android:src="@drawable/ic_baseline_text_format_24"
         android:text="Text to Image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_image_to_text"
+        app:layout_constraintStart_toEndOf="@+id/btn_image_to_text"
+        app:layout_constraintTop_toTopOf="@+id/btn_image_to_text" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -41,5 +41,25 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
+
+    <ImageButton
+        android:id="@+id/btn_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_logout"
+        app:layout_constraintEnd_toEndOf="@+id/btn_image_to_text"
+        app:layout_constraintStart_toStartOf="@+id/btn_image_to_text"
+        app:layout_constraintTop_toTopOf="@+id/btn_logout"
+        app:srcCompat="@drawable/ic_baseline_history_24" />
+
+    <ImageButton
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_text_to_image"
+        app:layout_constraintStart_toStartOf="@+id/btn_text_to_image"
+        app:layout_constraintTop_toBottomOf="@+id/btn_text_to_image"
+        app:srcCompat="@drawable/ic_baseline_power_settings_new_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
