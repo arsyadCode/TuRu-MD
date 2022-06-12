@@ -10,8 +10,11 @@
         android:id="@+id/translateTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:text="Translate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,11 +46,12 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/purple_700"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="@+id/translateEditTextLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/translateTextView"
-        app:srcCompat="@drawable/ic_baseline_arrow_forward_24" />
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
+        app:tint="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_translateTextToImage"

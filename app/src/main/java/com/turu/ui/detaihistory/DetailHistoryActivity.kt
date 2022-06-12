@@ -28,6 +28,11 @@ class DetailHistoryActivity : AppCompatActivity() {
     private lateinit var detailHistoryViewModel: DetailHistoryViewModel
     private lateinit var user: UserModel
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailHistoryBinding.inflate(layoutInflater)
@@ -36,6 +41,8 @@ class DetailHistoryActivity : AppCompatActivity() {
         val id = intent.getIntExtra(EXTRA_ID, 0)
         val text = intent.getStringExtra(EXTRA_TEXT)
         val listPictures = intent.getStringArrayExtra(EXTRA_LIST_PICTURES)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         detailHistoryViewModel = ViewModelProvider(this,
             ViewModelFactory(UserPreference.getInstance(dataStore))
