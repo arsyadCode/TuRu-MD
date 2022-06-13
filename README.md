@@ -21,7 +21,7 @@ TuRu (Translator Tuna Rungu) is an android application that educates knowledge o
   ```
   git clone https://github.com/arsyadCode/TuRu-MD.git
   ```
-- You can also download the .apk file [here]() and install it on your device.
+- You can also download the .apk file [here](https://github.com/arsyadCode/TuRu-MD/raw/master/app/release/app-release.apk) and install it on your device.
 
 ## Run
 - Run the application on android simulator or android device
